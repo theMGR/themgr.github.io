@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manivannan G — Full Stack Mobile Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,600&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --sun-gold: #F5A623;
+      --sun-rose: #F26B5B;
+      --bg: #FFF8F0;
+      --bg2: #FFF0E0;
+      --surface: #FFFFFF;
+      --text: #1A1109;
+      --text2: #6B5A46;
+      --border: rgba(245, 166, 35, 0.18);
+      --accent: #E8560D;
+      --tag-bg: rgba(245, 166, 35, 0.13);
+      --tag-text: #7A3B00;
+      --nav-blur: rgba(255, 248, 240, 0.88);
+    }
+
+    @media(prefers-color-scheme:dark) {
+      :root {
+        --bg: #160F06;
+        --bg2: #1E1408;
+        --surface: #231908;
+        --text: #FCEEDD;
+        --text2: #BEA882;
+        --border: rgba(245, 166, 35, 0.14);
+        --accent: #F5A623;
+        --tag-bg: rgba(245, 166, 35, 0.10);
+        --tag-text: #F5C97A;
+        --nav-blur: rgba(22, 15, 6, 0.88);
+      }
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .75rem 2rem;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: var(--nav-blur);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      background: linear-gradient(120deg, var(--sun-rose), var(--sun-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: .85rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--text2);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .orb1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(245, 166, 35, .22), transparent 70%);
+      top: -80px;
+      right: -100px;
+    }
+
+    .orb2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(242, 107, 91, .16), transparent 70%);
+      bottom: -60px;
+      left: -80px;
+    }
+
+    .orb3 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(168, 216, 234, .18), transparent 70%);
+      top: 30%;
+      right: 20%;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-size: .78rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--text2);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      opacity: 0;
+      animation: fadeUp .6s .1s forwards;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--sun-gold);
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -.03em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp .7s .2s forwards;
+    }
+
+    .accent {
+      background: linear-gradient(110deg, var(--sun-rose), var(--sun-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      max-width: 540px;
+      color: var(--text2);
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+      opacity: 0;
+      animation: fadeUp .7s .35s forwards;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeUp .7s .5s forwards;
+    }
+
+    .btn {
+      padding: .7rem 1.6rem;
+      border-radius: 999px;
+      font-size: .9rem;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      transition: transform .18s, box-shadow .18s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-p {
+      background: linear-gradient(120deg, var(--sun-rose), var(--sun-gold));
+      color: #fff;
+      border: none;
+      box-shadow: 0 4px 20px rgba(245, 166, 35, .28);
+    }
+
+    .btn-p:hover {
+      box-shadow: 0 8px 32px rgba(245, 166, 35, .38);
+    }
+
+    .btn-o {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-o:hover {
+      border-color: var(--sun-gold);
+      color: var(--sun-gold);
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeUp .7s .65s forwards;
+    }
+
+    .badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .3rem .85rem;
+      font-size: .8rem;
+      color: var(--text2);
+    }
+
+    .badge strong {
+      color: var(--sun-gold);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .s-label {
+      font-size: .72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--sun-gold);
+      margin-bottom: .5rem;
+      font-weight: 600;
+    }
+
+    .s-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin-bottom: 3rem;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text2);
+      margin-bottom: 1rem;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+    }
+
+    .stat-n {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(120deg, var(--sun-rose), var(--sun-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-l {
+      font-size: .75rem;
+      color: var(--text2);
+      margin-top: .2rem;
+    }
+
+    .skills-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: .5rem;
+    }
+
+    .sg-label {
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text2);
+      margin: .9rem 0 .3rem;
+      width: 100%;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid rgba(245, 166, 35, .2);
+      border-radius: 999px;
+      padding: .3rem .8rem;
+      font-size: .8rem;
+      transition: transform .15s, background .15s;
+      cursor: default;
+    }
+
+    .tag:hover {
+      transform: scale(1.05);
+      background: rgba(245, 166, 35, .22);
+    }
+
+    /* ACHIEVEMENTS */
+    .ach-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .ach-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.4rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s;
+    }
+
+    .ach-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .ach-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(245, 166, 35, .06), transparent 60%);
+      pointer-events: none;
+    }
+
+    .ach-icon {
+      font-size: 1.6rem;
+      margin-bottom: .75rem;
+    }
+
+    .ach-title {
+      font-family: 'Syne', sans-serif;
+      font-size: .95rem;
+      font-weight: 600;
+      margin-bottom: .4rem;
+    }
+
+    .ach-desc {
+      font-size: .83rem;
+      color: var(--text2);
+      line-height: 1.55;
+    }
+
+    .ach-hl {
+      display: inline-block;
+      margin-top: .5rem;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      background: linear-gradient(110deg, var(--sun-rose), var(--sun-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* PROJECTS */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .proj-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform .22s, box-shadow .22s;
+    }
+
+    .proj-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(245, 166, 35, .05), transparent 60%);
+      pointer-events: none;
+    }
+
+    .proj-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(245, 166, 35, .13);
+    }
+
+    .proj-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--sun-rose), var(--sun-gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      margin-bottom: .9rem;
+    }
+
+    .proj-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: .25rem;
+    }
+
+    .proj-meta {
+      font-size: .75rem;
+      color: var(--text2);
+      margin-bottom: .5rem;
+    }
+
+    .proj-desc {
+      font-size: .85rem;
+      color: var(--text2);
+      line-height: 1.6;
+      margin-bottom: .9rem;
+    }
+
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+      margin-bottom: .75rem;
+    }
+
+    .ptag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 999px;
+      padding: .18rem .65rem;
+      font-size: .73rem;
+    }
+
+    .store-links {
+      display: flex;
+      gap: .5rem;
+    }
+
+    .sl {
+      font-size: .75rem;
+      padding: .28rem .7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--text2);
+      text-decoration: none;
+      transition: border-color .15s, color .15s;
+    }
+
+    .sl:hover {
+      border-color: var(--sun-gold);
+      color: var(--sun-gold);
+    }
+
+    /* LAB */
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .lab-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform .22s, box-shadow .22s;
+    }
+
+    .lab-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(245, 166, 35, .13);
+    }
+
+    .lab-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(168, 216, 234, .07), transparent 60%);
+      pointer-events: none;
+    }
+
+    .lab-header {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: .9rem;
+    }
+
+    .lab-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #4FACFE, #00F2FE);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .lab-name {
+      font-family: 'Syne', sans-serif;
+      font-size: .98rem;
+      font-weight: 600;
+    }
+
+    .lab-desc {
+      font-size: .85rem;
+      color: var(--text2);
+      line-height: 1.6;
+      margin-bottom: .9rem;
+    }
+
+    .lab-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+    }
+
+    .ltag {
+      background: rgba(79, 172, 254, .1);
+      color: #1a6fa8;
+      border: 1px solid rgba(79, 172, 254, .2);
+      border-radius: 999px;
+      padding: .18rem .65rem;
+      font-size: .73rem;
+    }
+
+    @media(prefers-color-scheme:dark) {
+      .ltag {
+        color: #7ECFFF;
+        background: rgba(79, 172, 254, .08);
+        border-color: rgba(79, 172, 254, .15);
+      }
+    }
+
+    /* SIDE PROJECTS */
+    .side-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .side-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform .22s, box-shadow .22s;
+    }
+
+    .side-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(242, 107, 91, .12);
+    }
+
+    .side-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(242, 107, 91, .05), transparent 60%);
+      pointer-events: none;
+    }
+
+    .side-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      margin-bottom: .9rem;
+    }
+
+    .side-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: .25rem;
+    }
+
+    .side-meta {
+      font-size: .75rem;
+      color: var(--text2);
+      margin-bottom: .5rem;
+    }
+
+    .side-desc {
+      font-size: .85rem;
+      color: var(--text2);
+      line-height: 1.6;
+      margin-bottom: .9rem;
+    }
+
+    .side-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+    }
+
+    .stag {
+      background: rgba(161, 140, 209, .12);
+      color: #6d4fa8;
+      border: 1px solid rgba(161, 140, 209, .2);
+      border-radius: 999px;
+      padding: .18rem .65rem;
+      font-size: .73rem;
+    }
+
+    @media(prefers-color-scheme:dark) {
+      .stag {
+        color: #c4aaff;
+        background: rgba(161, 140, 209, .08);
+        border-color: rgba(161, 140, 209, .15);
+      }
+    }
+
+    /* EXPERIENCE */
+    .timeline {
+      position: relative;
+      padding-left: 1.75rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--sun-gold), transparent);
+    }
+
+    .tl-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -1.75rem;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--sun-gold);
+      box-shadow: 0 0 0 3px var(--bg2);
+    }
+
+    .tl-date {
+      font-size: .78rem;
+      color: var(--text2);
+      letter-spacing: .06em;
+      margin-bottom: .2rem;
+    }
+
+    .tl-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: .15rem;
+    }
+
+    .tl-company {
+      font-size: .9rem;
+      color: var(--sun-gold);
+      margin-bottom: .6rem;
+    }
+
+    .tl-pts {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tl-pts li {
+      font-size: .88rem;
+      color: var(--text2);
+      line-height: 1.65;
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: .35rem;
+    }
+
+    .tl-pts li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--sun-gold);
+      font-size: .75rem;
+      top: .15rem;
+    }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.1rem 1.25rem;
+    }
+
+    .edu-deg {
+      font-family: 'Syne', sans-serif;
+      font-size: .95rem;
+      font-weight: 600;
+      margin-bottom: .25rem;
+    }
+
+    .edu-sub {
+      font-size: .82rem;
+      color: var(--text2);
+      margin-bottom: .4rem;
+    }
+
+    .edu-gpa {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      background: linear-gradient(110deg, var(--sun-rose), var(--sun-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* TERMS & CREDITS */
+    .legal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .legal-block h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: .75rem;
+      color: var(--text);
+    }
+
+    .legal-block p,
+    .legal-block li {
+      font-size: .85rem;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: .5rem;
+    }
+
+    .legal-block ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .legal-block ul li {
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .legal-block ul li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--sun-gold);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .credits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: .75rem;
+      margin-top: 1.5rem;
+    }
+
+    .credit-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: .75rem 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+    }
+
+    .credit-chip-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: .05rem;
+    }
+
+    .credit-chip-text {
+      font-size: .78rem;
+      color: var(--text2);
+      line-height: 1.5;
+    }
+
+    .credit-chip-text strong {
+      display: block;
+      font-size: .82rem;
+      color: var(--text);
+      margin-bottom: .1rem;
+    }
+
+    .disclaimer-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--sun-gold);
+      border-radius: 0 12px 12px 0;
+      padding: 1rem 1.25rem;
+      margin-top: 1.5rem;
+      font-size: .83rem;
+      color: var(--text2);
+      line-height: 1.65;
+    }
+
+    @media(max-width:720px) {
+      .legal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .credits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .credit-chip {
+        padding: .65rem .9rem;
+      }
+    }
+
+    /* MOBILE TERMS PILL */
+    .terms-pill {
+      display: none;
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      z-index: 99;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .5rem 1rem;
+      font-size: .75rem;
+      color: var(--text2);
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: border-color .2s, color .2s;
+    }
+
+    .terms-pill:hover {
+      border-color: var(--sun-gold);
+      color: var(--sun-gold);
+    }
+
+    @media(max-width:720px) {
+      .terms-pill {
+        display: flex;
+        align-items: center;
+        gap: .4rem;
+      }
+    }
+
+    /* CONTACT */
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center top, rgba(245, 166, 35, .08), transparent 60%);
+      pointer-events: none;
+    }
+
+    .contact-box h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: .75rem;
+    }
+
+    .contact-box p {
+      color: var(--text2);
+      margin-bottom: 2rem;
+    }
+
+    .c-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .c-link {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .65rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: .88rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: border-color .18s, color .18s, transform .18s;
+    }
+
+    .c-link:hover {
+      border-color: var(--sun-gold);
+      color: var(--sun-gold);
+      transform: translateY(-2px);
+    }
+
+    .c-link svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: .8rem;
+      color: var(--text2);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ANIM */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s, transform .6s;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:720px) {
+      nav {
+        padding: .75rem 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--nav-blur);
+        border-bottom: 1px solid var(--border);
+        padding: .5rem 0;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li a {
+        display: block;
+        padding: .75rem 1.5rem;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 3.5rem 1.25rem;
+      }
+
+      .contact-box {
+        padding: 2rem 1.25rem;
+      }
+
+      .ach-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:420px) {
+      .stats-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .ach-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <span class="nav-logo">MGR.</span>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#achievements">Impact</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#lab">Lab</a></li>
+      <li><a href="#sideprojects">Side Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#terms">Terms</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <div class="hero-inner">
+      <p class="eyebrow">Full Stack Mobile Developer · 7+ Years</p>
+      <h1>Manivannan G<br><span class="accent">Building apps that scale</span></h1>
+      <p class="hero-desc">Cross-platform mobile specialist crafting high-performance iOS & Android apps. From 48,000+
+        daily warehouse scans to UK last-mile delivery platforms — I ship things that work at scale.</p>
+      <div class="cta-row">
+        <a href="#projects" class="btn btn-p">View my work ↓</a>
+        <a href="#contact" class="btn btn-o">Let's connect</a>
+      </div>
+      <div class="badges">
+        <span class="badge">📍 Bhavani, India</span>
+        <span class="badge">🎓 M.E. CS · <strong>CGPA 8.22</strong></span>
+        <span class="badge">🏆 Best Contributor Award</span>
+        <span class="badge">💼 TVS Supply Chain · <strong>7+ yrs</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="inner">
+      <p class="s-label reveal">About</p>
+      <h2 class="s-title reveal">Who I am</h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>Senior Software Engineer with 7+ years of experience building and shipping cross-platform mobile
+            applications for iOS and Android. Specialising in scalable app architecture, REST API integration, and
+            enterprise mobility solutions across logistics and warehouse domains.</p>
+          <p>Proficient in performance optimisation, offline-first architecture, CI/CD pipelines, and
+            microservices-based backends. Comfortable leading end-to-end delivery — from requirements and design to
+            deployment and production support — in fast-paced Agile teams.</p>
+          <div class="stats-row">
+            <div class="stat">
+              <div class="stat-n">7+</div>
+              <div class="stat-l">Years experience</div>
+            </div>
+            <div class="stat">
+              <div class="stat-n">48K+</div>
+              <div class="stat-l">Daily scans handled</div>
+            </div>
+            <div class="stat">
+              <div class="stat-n">₹6Cr</div>
+              <div class="stat-l">Business impact Q3'24</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="skills-cloud">
+            <span class="sg-label">Mobile & Languages</span>
+            <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Android SDK</span><span
+              class="tag">Kotlin</span><span class="tag">Java</span>
+            <span class="sg-label">State & Architecture</span>
+            <span class="tag">GetX</span><span class="tag">Bloc</span><span class="tag">Riverpod</span><span
+              class="tag">Clean Arch</span><span class="tag">MVVM</span><span class="tag">SOLID</span>
+            <span class="sg-label">Backend & APIs</span>
+            <span class="tag">Spring Boot</span><span class="tag">Serverpod</span><span class="tag">REST
+              APIs</span><span class="tag">WebSockets</span><span class="tag">Firebase</span><span
+              class="tag">Microservices</span><span class="tag">Retrofit</span><span class="tag">DIO</span><span
+              class="tag">OkHttp</span><span class="tag">GetConnect</span>
+            <span class="sg-label">Data & Storage</span>
+            <span class="tag">SQLite</span><span class="tag">Hive</span><span class="tag">Realm</span><span
+              class="tag">Sembast</span><span class="tag">Shared Preferences</span><span class="tag">MySQL</span>
+            <span class="sg-label">Dependency Injection</span>
+            <span class="tag">GetIt</span><span class="tag">Kiwi</span><span class="tag">Dagger</span>
+            <span class="sg-label">Testing & Performance</span>
+            <span class="tag">Widget Testing</span><span class="tag">Unit Testing</span><span class="tag">Performance
+              Profiling</span>
+            <span class="sg-label">DevOps & CI/CD</span>
+            <span class="tag">Codemagic</span><span class="tag">Fastlane</span><span class="tag">Docker</span><span
+              class="tag">Git</span><span class="tag">Subversion</span><span class="tag">Azure DevOps</span><span
+              class="tag">JIRA</span><span class="tag">Apache Kafka</span><span class="tag">Agile/Scrum</span><span
+              class="tag">AI-assisted Dev</span>
+            <span class="sg-label">Infrastructure & Self-Hosting</span>
+            <span class="tag">Ubuntu Server</span><span class="tag">Apache</span><span class="tag">Nginx</span><span
+              class="tag">Cloudflare</span><span class="tag">Cloudflare Tunnel</span><span
+              class="tag">Self-Hosting</span><span class="tag">DNS / SSL</span><span class="tag">Ollama</span>
+            <span class="sg-label">Web & Frontend</span>
+            <span class="tag">Angular</span><span class="tag">React</span><span class="tag">Tailwind CSS</span><span
+              class="tag">HTML/CSS/JS</span>
+            <span class="sg-label">Soft Skills</span>
+            <span class="tag">Analytical Thinking</span><span class="tag">Problem Solving</span><span
+              class="tag">Stakeholder Comms</span><span class="tag">Team Leadership</span><span
+              class="tag">Mentorship</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" style="background:var(--bg2);">
+    <div class="inner">
+      <p class="s-label reveal">Impact</p>
+      <h2 class="s-title reveal">Key achievements</h2>
+      <div class="ach-grid">
+        <div class="ach-card reveal">
+          <div class="ach-icon">🏭</div>
+          <div class="ach-title">Enterprise App Impact</div>
+          <div class="ach-desc">Led development of a warehouse mobility app processing 48,000+ barcode scans per day.
+          </div>
+          <span class="ach-hl">₹6 Crore · Q3 2024</span>
+        </div>
+        <div class="ach-card reveal">
+          <div class="ach-icon">🐛</div>
+          <div class="ach-title">Crash Rate Reduction</div>
+          <div class="ach-desc">Improved app stability through disciplined testing, performance profiling, and targeted
+            fixes.</div>
+          <span class="ach-hl">25% fewer crashes</span>
+        </div>
+        <div class="ach-card reveal">
+          <div class="ach-icon">🏆</div>
+          <div class="ach-title">Best Contributor Award</div>
+          <div class="ach-desc">Recognised for consistently on-time sprint delivery and quality output across multiple
+            Agile release cycles.</div>
+        </div>
+        <div class="ach-card reveal">
+          <div class="ach-icon">⚡</div>
+          <div class="ach-title">Team Leadership</div>
+          <div class="ach-desc">Led scrums, mentored developers, and improved cross-team communication workflows.</div>
+          <span class="ach-hl">20% sprint efficiency gain</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="inner">
+      <p class="s-label reveal">Projects</p>
+      <h2 class="s-title reveal">Things I've shipped</h2>
+      <div class="proj-grid">
+
+        <div class="proj-card reveal">
+          <div class="proj-icon">🚚</div>
+          <div class="proj-name">Courier Alliance</div>
+          <div class="proj-meta">TVS Supply Chain · Flutter · Spring Boot · Team of 4</div>
+          <div class="proj-desc">UK-based last-mile delivery platform with real-time courier bidding using geolocation.
+            System selects the optimal match for timely, cost-effective delivery at scale.</div>
+          <div class="proj-tags"><span class="ptag">Flutter</span><span class="ptag">Spring Boot</span><span
+              class="ptag">Geolocation</span><span class="ptag">Real-time</span></div>
+          <div class="store-links">
+            <a class="sl" href="https://play.google.com/store/apps/details?id=com.courieralliance.driverca"
+              target="_blank" rel="noopener">▶ Play Store</a>
+            <a class="sl" href="https://apps.apple.com/in/app/courier-alliance/id1533237764" target="_blank"
+              rel="noopener"> App Store</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-icon">📦</div>
+          <div class="proj-name">Visibility – WMS</div>
+          <div class="proj-meta">TVS Supply Chain · Flutter · Team of 4</div>
+          <div class="proj-desc">High-throughput warehouse mobility solution handling 48,000+ barcode scans per day.
+            Full goods receipt, putaway, picking, and dispatch operations on mobile.</div>
+          <div class="proj-tags"><span class="ptag">Flutter</span><span class="ptag">Barcode</span><span
+              class="ptag">Offline-first</span><span class="ptag">ZPL Printing</span></div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-icon">🗺️</div>
+          <div class="proj-name">i-eXchange</div>
+          <div class="proj-meta">TVS Supply Chain · Flutter · Spring Boot · Team of 4</div>
+          <div class="proj-desc">India-focused logistics platform for manual courier allocation and streamlined
+            last-mile delivery with real-time dispatcher and driver visibility.</div>
+          <div class="proj-tags"><span class="ptag">Flutter</span><span class="ptag">Spring Boot</span><span
+              class="ptag">Live tracking</span></div>
+          <div class="store-links">
+            <a class="sl" href="https://play.google.com/store/apps/details?id=com.iex.driver" target="_blank"
+              rel="noopener">▶ Play Store</a>
+            <a class="sl" href="https://apps.apple.com/in/app/i-exchange/id1545190755" target="_blank" rel="noopener">
+              App Store</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-icon">🚛</div>
+          <div class="proj-name">i-Loads Suite</div>
+          <div class="proj-meta">TVS Supply Chain · Android · Team of 5 · 2019–2021</div>
+          <div class="proj-desc">3-app logistics ecosystem connecting Load Providers, Brokers, Transporters, and Drivers
+            with live location updates and full order completion workflows.</div>
+          <div class="proj-tags"><span class="ptag">Android</span><span class="ptag">Google Maps</span><span
+              class="ptag">FCM</span></div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-icon">🧵</div>
+          <div class="proj-name">Silk Track</div>
+          <div class="proj-meta">Freelance · Flutter · Team of 2</div>
+          <div class="proj-desc">Vendor-facing retail management for local apparel businesses. Full order lifecycle from
+            inquiry → booking → billing → dispatch → delivery tracking.</div>
+          <div class="proj-tags"><span class="ptag">Flutter</span><span class="ptag">Order Management</span><span
+              class="ptag">Payments</span></div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-icon">🥛</div>
+          <div class="proj-name">Aavin BMC</div>
+          <div class="proj-meta">Freelance · Flutter · Team of 2</div>
+          <div class="proj-desc">Cloud-based milk collection management for dairy cooperatives. Replaced paper records
+            with digital logging, real-time transactions, and analytics dashboards.</div>
+          <div class="proj-tags"><span class="ptag">Flutter</span><span class="ptag">Analytics</span><span
+              class="ptag">Cloud</span></div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-icon">🛒</div>
+          <div class="proj-name">Gudmart</div>
+          <div class="proj-meta">Freelance · Android · 2018–2019</div>
+          <div class="proj-desc">Multi-tier e-commerce spanning 5 supply chain roles — Manufacturer to Consumer — with a
+            dual buyer-seller model in a single account.</div>
+          <div class="proj-tags"><span class="ptag">Android</span><span class="ptag">E-commerce</span><span
+              class="ptag">Multi-role</span></div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-icon">🍱</div>
+          <div class="proj-name">Tasti</div>
+          <div class="proj-meta">Arrin Solutions · Android · Team of 3</div>
+          <div class="proj-desc">Hyperlocal food marketplace connecting home cooks with nearby customers via GPS
+            discovery. Supports PayPal & COD payments with ratings and reviews.</div>
+          <div class="proj-tags"><span class="ptag">Android</span><span class="ptag">Google Maps</span><span
+              class="ptag">PayPal</span></div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-icon">🏎️</div>
+          <div class="proj-name">CrossyDrive</div>
+          <div class="proj-meta">Arrin Solutions · Unity 3D · Team of 3 · 2015–2018</div>
+          <div class="proj-desc">Casual endless car racing game set in a blocky world. Built in Unity 3D with procedural
+            track generation, increasing difficulty, and smooth mobile controls.</div>
+          <div class="proj-tags"><span class="ptag">Unity 3D</span><span class="ptag">Android</span><span
+              class="ptag">Game Dev</span><span class="ptag">C#</span></div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-icon">🕵️</div>
+          <div class="proj-name">Pick'nDrop</div>
+          <div class="proj-meta">Arrin Solutions · Unity 3D · Team of 3 · 2015–2018</div>
+          <div class="proj-desc">Isometric 2.5D stealth-delivery game. Collect parcels scattered across a city and
+            deliver them to hideouts without getting caught. Includes Google Cardboard VR support.</div>
+          <div class="proj-tags"><span class="ptag">Unity 3D</span><span class="ptag">Android</span><span
+              class="ptag">VR / Cardboard</span><span class="ptag">C#</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SELF-HOSTED LAB -->
+  <section id="lab" style="background:var(--bg2);">
+    <div class="inner">
+      <p class="s-label reveal">Self-Hosted Lab</p>
+      <h2 class="s-title reveal">Infrastructure I run</h2>
+      <div class="lab-grid">
+
+        <div class="lab-card reveal">
+          <div class="lab-header">
+            <div class="lab-icon">🌐</div>
+            <div class="lab-name">mahendhraa.com · Ubuntu Server</div>
+          </div>
+          <div class="lab-desc">Personal Ubuntu server self-hosted at home. Apache serves static sites; Nginx handles
+            reverse proxying for multiple services on the same machine. Fully managed from the command line.</div>
+          <div class="lab-stack"><span class="ltag">Ubuntu 24 LTS</span><span class="ltag">Apache</span><span
+              class="ltag">Nginx</span><span class="ltag">Self-hosted</span></div>
+        </div>
+
+        <div class="lab-card reveal">
+          <div class="lab-header">
+            <div class="lab-icon">☁️</div>
+            <div class="lab-name">Cloudflare Tunnel + DNS</div>
+          </div>
+          <div class="lab-desc">mahendhraa.com is proxied through Cloudflare — DNS, SSL/TLS termination, DDoS
+            protection, and caching handled at the edge. Zero open ports on the server via Cloudflare Tunnel
+            (cloudflared) for internal services.</div>
+          <div class="lab-stack"><span class="ltag">Cloudflare</span><span class="ltag">cloudflared</span><span
+              class="ltag">DNS / SSL</span><span class="ltag">Zero Trust</span></div>
+        </div>
+
+        <div class="lab-card reveal">
+          <div class="lab-header">
+            <div class="lab-icon">🐳</div>
+            <div class="lab-name">Docker · Containerised Services</div>
+          </div>
+          <div class="lab-desc">Local services run in Docker containers for clean isolation. Compose stacks manage
+            Ollama, web apps, and databases. Images are built locally and deployed without touching the host
+            environment.</div>
+          <div class="lab-stack"><span class="ltag">Docker</span><span class="ltag">Docker Compose</span><span
+              class="ltag">Container Networking</span></div>
+        </div>
+
+        <div class="lab-card reveal">
+          <div class="lab-header">
+            <div class="lab-icon">🤖</div>
+            <div class="lab-name">Ollama · Local LLM Stack</div>
+          </div>
+          <div class="lab-desc">Multi-model Ollama setup running on personal hardware (high RAM, SSD, RTX 3050).
+            Separate models for coding, general chat, fast responses, writing, and reasoning — all 100% offline, no API
+            costs.</div>
+          <div class="lab-stack"><span class="ltag">Ollama</span><span class="ltag">RTX 3050</span><span
+              class="ltag">Local LLM</span><span class="ltag">Offline AI</span></div>
+        </div>
+
+        <div class="lab-card reveal">
+          <div class="lab-header">
+            <div class="lab-icon">💬</div>
+            <div class="lab-name">Local AI Chat Interface</div>
+          </div>
+          <div class="lab-desc">Self-built ChatGPT-style web UI that talks to Ollama locally. Multi-model switcher,
+            conversation persistence in localStorage, responsive design. Zero cloud dependency — fully runs on LAN.
+          </div>
+          <div class="lab-stack"><span class="ltag">Next.js</span><span class="ltag">Tailwind</span><span
+              class="ltag">Ollama API</span><span class="ltag">Self-hosted</span></div>
+        </div>
+
+        <div class="lab-card reveal">
+          <div class="lab-header">
+            <div class="lab-icon">🔧</div>
+            <div class="lab-name">Agentic Dev Workflow</div>
+          </div>
+          <div class="lab-desc">Actively exploring AI-assisted development with Kiro IDE, Claude, and vibe coding
+            workflows. Experimenting with agent-driven code generation and prompt engineering for real production tasks.
+          </div>
+          <div class="lab-stack"><span class="ltag">Kiro IDE</span><span class="ltag">Claude</span><span
+              class="ltag">Vibe Coding</span><span class="ltag">AI Agents</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAL PROJECTS -->
+  <section id="sideprojects">
+    <div class="inner">
+      <p class="s-label reveal">Personal Projects</p>
+      <h2 class="s-title reveal">Built on my own time</h2>
+      <div class="side-grid">
+
+        <div class="side-card reveal">
+          <div class="side-icon">💍</div>
+          <div class="side-name">Matrimony App</div>
+          <div class="side-meta">Personal · React + Vite + Tailwind · 2024–2025</div>
+          <div class="side-desc">Full-featured matchmaking platform with profile management, smart filtering by
+            religion, caste, location, and age, direct messaging, and a match recommendation engine. Built end-to-end
+            from AI-generated agent prompts.</div>
+          <div class="side-tags"><span class="stag">React</span><span class="stag">Vite</span><span
+              class="stag">Tailwind</span><span class="stag">Node.js</span><span class="stag">MySQL</span></div>
+        </div>
+
+        <div class="side-card reveal">
+          <div class="side-icon">🌅</div>
+          <div class="side-name">This Portfolio</div>
+          <div class="side-meta">Personal · mahendhraa.com · 2025</div>
+          <div class="side-desc">Zero-dependency, single HTML file portfolio. Sunrise colour palette with auto
+            light/dark mode, scroll-reveal animations, fully responsive. Served via Apache on Ubuntu, proxied through
+            Cloudflare.</div>
+          <div class="side-tags"><span class="stag">HTML/CSS/JS</span><span class="stag">Apache</span><span
+              class="stag">Cloudflare</span><span class="stag">Self-hosted</span></div>
+        </div>
+
+        <div class="side-card reveal">
+          <div class="side-icon">🧪</div>
+          <div class="side-name">Flutter Multilingual Widget</div>
+          <div class="side-meta">Personal · Flutter · 2024</div>
+          <div class="side-desc">Animated gradient background widget with a custom wave painter supporting multiple
+            Indian languages. Built without external assets — pure Flutter canvas rendering with smooth animation
+            cycles.</div>
+          <div class="side-tags"><span class="stag">Flutter</span><span class="stag">CustomPainter</span><span
+              class="stag">Animation</span><span class="stag">i18n</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" style="background:var(--bg2);">
+    <div class="inner">
+      <p class="s-label reveal">Experience</p>
+      <h2 class="s-title reveal">Where I've worked</h2>
+      <div class="timeline reveal">
+        <div class="tl-item">
+          <div class="tl-date">Mar 2019 – May 2026 · 7+ years</div>
+          <div class="tl-role">Senior Software Engineer</div>
+          <div class="tl-company">TVS Supply Chain Solutions (White Data Systems India Pvt Ltd) · Coimbatore</div>
+          <ul class="tl-pts">
+            <li>Built and maintained cross-platform mobile apps for iOS and Android serving logistics and warehouse
+              operations, improving user engagement by 30%.</li>
+            <li>Implemented silent PDF and ZPL printing for warehouse label printers, enabling background printing
+              without user intervention.</li>
+            <li>Led end-to-end mobile development lifecycle from requirements and architecture through deployment and
+              production support.</li>
+            <li>Reduced application crash rates by 25% through systematic debugging, root-cause analysis, and targeted
+              performance optimisations.</li>
+            <li>Mentored junior developers, conducted code reviews, and facilitated daily scrums — driving a 20%
+              improvement in sprint efficiency.</li>
+            <li>Authored and maintained comprehensive technical documentation for features and APIs, improving team
+              onboarding speed and knowledge sharing.</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Feb 2018 – Feb 2019</div>
+          <div class="tl-role">Freelance Android Developer & Stakeholder</div>
+          <div class="tl-company">Gudmart · Erode, Coimbatore</div>
+          <ul class="tl-pts">
+            <li>Designed and developed a scalable multi-party e-commerce platform serving five supply chain roles.</li>
+            <li>Architected a role-agnostic model where any user can act as both buyer and seller without separate
+              accounts.</li>
+            <li>Built complete buyer-side and seller-side flows including catalogue management and full order lifecycle
+              handling.</li>
+            <li>Prioritised a clean, minimal UI to keep the experience accessible for users across varying levels of
+              tech familiarity.</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Oct 2015 – Jan 2018</div>
+          <div class="tl-role">Junior Android App & Game Developer</div>
+          <div class="tl-company">Arrin Solutions · Coimbatore</div>
+          <ul class="tl-pts">
+            <li>Integrated RESTful APIs using Retrofit and OkHttp; configured Firebase (FCM, Realtime DB,
+              Authentication).</li>
+            <li>Implemented third-party integrations including Google Maps, Google Places, Facebook API, Twitter API,
+              and Google Ads.</li>
+            <li>Developed Android casual games in Unity 3D including a Google Cardboard VR-compatible experience.</li>
+            <li>Managed full Android SDLC independently — from wireframes and development through testing and Play Store
+              deployment.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="s-label reveal" style="margin-top:1rem;">Education</p>
+      <div class="edu-grid reveal">
+        <div class="edu-card">
+          <div class="edu-deg">M.E. Computer Science</div>
+          <div class="edu-sub">Karpagam University, Coimbatore · Aug 2011 – Jul 2013</div>
+          <div class="edu-gpa">CGPA 8.22</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-deg">B.Tech Information Technology</div>
+          <div class="edu-sub">The Kavery Engineering College, Mecheri · May 2007 – Apr 2011</div>
+          <div class="edu-gpa">CGPA 7.54</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-deg">XII · Higher Secondary</div>
+          <div class="edu-sub">MAM Higher Secondary School, Mettur Dam · Apr 2007</div>
+          <div class="edu-gpa">69%</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-deg">X · Matriculation</div>
+          <div class="edu-sub">JKK Rangammal MHSS, Kumarapalayam · Apr 2005</div>
+          <div class="edu-gpa">66%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERMS & CREDITS -->
+  <section id="terms" style="background:var(--bg2);">
+    <div class="inner">
+      <p class="s-label reveal">Legal & Credits</p>
+      <h2 class="s-title reveal">Terms, Disclaimer & Acknowledgements</h2>
+
+      <div class="legal-grid">
+
+        <div class="legal-block reveal">
+          <h3>📄 Terms & Disclaimer</h3>
+          <ul>
+            <li>This is a personal portfolio website maintained by Manivannan G for professional presentation purposes
+              only.</li>
+            <li>All project descriptions are based on my own contributions and experience. They do not represent the
+              full scope or intellectual property of any employer or client.</li>
+            <li>Projects listed under TVS Supply Chain Solutions / White Data Systems India Pvt Ltd are described solely
+              from my individual role perspective and do not disclose any confidential, proprietary, or sensitive
+              business information.</li>
+            <li>External links (Play Store, App Store, GitHub) are provided for reference. I am not responsible for the
+              content, availability, or changes on third-party platforms.</li>
+            <li>The information on this site is provided in good faith and is subject to change without notice. No
+              warranty of any kind — explicit or implied — is made regarding accuracy or completeness.</li>
+            <li>This website does not collect personal data, use cookies, or run any analytics tracking.</li>
+            <li>For any concerns, corrections, or takedown requests, contact me at manivannan.g@outlook.in.</li>
+          </ul>
+        </div>
+
+        <div class="legal-block reveal">
+          <h3>⚖️ Intellectual Property</h3>
+          <ul>
+            <li>App Store and Google Play Store listings for Courier Alliance and i-eXchange are owned by their
+              respective rights holders (TVS Supply Chain Solutions). Links are shared for portfolio reference only.
+            </li>
+            <li>All code written personally by me remains my intellectual contribution. Code written as part of
+              employment is the property of the respective employer.</li>
+            <li>Game projects (CrossyDrive, Pick'nDrop) were developed as part of my role at Arrin Solutions. All rights
+              belong to Arrin Solutions.</li>
+            <li>Freelance project work (Silk Track, Aavin BMC, Gudmart) was delivered to respective clients who hold
+              ownership of those products.</li>
+            <li>No code, design, or content from this portfolio may be reproduced or redistributed without explicit
+              written permission.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="legal-block reveal" style="margin-top:2rem;">
+        <h3>🙏 Acknowledgements & Open Source Credits</h3>
+        <p>This portfolio and the projects within it were built standing on the shoulders of great open source work.
+          Grateful thanks to the following communities and developers:</p>
+      </div>
+
+      <div class="credits-grid reveal">
+        <div class="credit-chip">
+          <div class="credit-chip-icon">💙</div>
+          <div class="credit-chip-text">
+            <strong>Flutter & Dart — Google</strong>
+            The primary SDK used across most projects. Open source under BSD licence. flutter.dev
+          </div>
+        </div>
+        <div class="credit-chip">
+          <div class="credit-chip-icon">🤖</div>
+          <div class="credit-chip-text">
+            <strong>Ollama</strong>
+            Local LLM runtime used in the self-hosted AI chat project. Open source. ollama.com
+          </div>
+        </div>
+        <div class="credit-chip">
+          <div class="credit-chip-icon">⚛️</div>
+          <div class="credit-chip-text">
+            <strong>React & Vite — Meta / Evan You</strong>
+            Used in the Matrimony app and portfolio tooling. Open source under MIT licence.
+          </div>
+        </div>
+        <div class="credit-chip">
+          <div class="credit-chip-icon">🟢</div>
+          <div class="credit-chip-text">
+            <strong>Node.js — OpenJS Foundation</strong>
+            Backend runtime used across personal and freelance projects. nodejs.org
+          </div>
+        </div>
+        <div class="credit-chip">
+          <div class="credit-chip-icon">🐳</div>
+          <div class="credit-chip-text">
+            <strong>Docker — Docker Inc.</strong>
+            Container platform powering the self-hosted lab setup. docker.com
+          </div>
+        </div>
+        <div class="credit-chip">
+          <div class="credit-chip-icon">☁️</div>
+          <div class="credit-chip-text">
+            <strong>Cloudflare — Cloudflare Inc.</strong>
+            DNS, SSL, and tunnel services for mahendhraa.com. cloudflare.com
+          </div>
+        </div>
+        <div class="credit-chip">
+          <div class="credit-chip-icon">🔥</div>
+          <div class="credit-chip-text">
+            <strong>Firebase — Google</strong>
+            Auth, FCM, and Realtime DB used across multiple mobile apps. firebase.google.com
+          </div>
+        </div>
+        <div class="credit-chip">
+          <div class="credit-chip-icon">🗺️</div>
+          <div class="credit-chip-text">
+            <strong>Google Maps & Places — Google</strong>
+            Location and mapping APIs used in logistics and food delivery apps.
+          </div>
+        </div>
+        <div class="credit-chip">
+          <div class="credit-chip-icon">🎮</div>
+          <div class="credit-chip-text">
+            <strong>Unity 3D — Unity Technologies</strong>
+            Game engine used for CrossyDrive, Pick'nDrop, and the VR Cardboard experience.
+          </div>
+        </div>
+        <div class="credit-chip">
+          <div class="credit-chip-icon">🌐</div>
+          <div class="credit-chip-text">
+            <strong>Apache HTTP Server — Apache Foundation</strong>
+            Web server powering this portfolio on the self-hosted Ubuntu machine.
+          </div>
+        </div>
+        <div class="credit-chip">
+          <div class="credit-chip-icon">🅺</div>
+          <div class="credit-chip-text">
+            <strong>Apache Kafka — Apache Foundation</strong>
+            Message streaming infrastructure explored in backend microservices work.
+          </div>
+        </div>
+        <div class="credit-chip">
+          <div class="credit-chip-icon">🐦</div>
+          <div class="credit-chip-text">
+            <strong>Spring Boot — VMware / Pivotal</strong>
+            Java backend framework powering Courier Alliance and i-eXchange APIs.
+          </div>
+        </div>
+        <div class="credit-chip">
+          <div class="credit-chip-icon">🔤</div>
+          <div class="credit-chip-text">
+            <strong>Syne & DM Sans — Google Fonts</strong>
+            Typography used throughout this portfolio. fonts.google.com
+          </div>
+        </div>
+        <div class="credit-chip">
+          <div class="credit-chip-icon">🐙</div>
+          <div class="credit-chip-text">
+            <strong>GitHub — Microsoft</strong>
+            Version control and code hosting for personal and open source work. github.com/theMGR
+          </div>
+        </div>
+      </div>
+
+      <div class="disclaimer-box reveal">
+        <strong style="color:var(--sun-gold);">Learning & Reference Note —</strong>
+        Concepts, patterns, and techniques used across these projects were learned from official documentation, Stack
+        Overflow, GitHub repositories, YouTube tutorials, and the broader developer community. Where specific libraries
+        or snippets were referenced, they were used in accordance with their respective open source licences (MIT, BSD,
+        Apache 2.0). This portfolio itself was built without any third-party JS framework — pure HTML, CSS, and vanilla
+        JS — as a learning exercise in lightweight self-hosting.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="inner">
+      <div class="contact-box reveal">
+        <h3>Let's build something together</h3>
+        <p>Open to senior developer roles, freelance projects, and interesting collaborations.<br>Based in Bhavani ·
+          Available remotely.</p>
+        <div class="c-links">
+          <a href="mailto:manivannan.g@outlook.in" class="c-link">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            manivannan.g@outlook.in
+          </a>
+          <a href="tel:+919344277211" class="c-link">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l1.56-1.56a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            +91 93442 77211
+          </a>
+          <a href="https://github.com/theMGR" target="_blank" rel="noopener" class="c-link">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+            </svg>
+            github.com/theMGR
+          </a>
+          <a href="https://linkedin.com/in/themgr" target="_blank" rel="noopener" class="c-link">
+            <svg viewBox="0 0 24 24">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+            linkedin.com/in/themgr
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="#terms" class="terms-pill">📄 Terms & Credits</a>
+
+  <footer>
+    <p>© 2025 Manivannan G · Full Stack Mobile Developer · mahendhraa.com</p>
+    <p style="margin-top:.75rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;">
+      <a href="#terms"
+        style="color:var(--text2);text-decoration:none;padding:.3rem .75rem;border:1px solid var(--border);border-radius:999px;font-size:.78rem;"
+        onmouseover="this.style.borderColor='var(--sun-gold)';this.style.color='var(--sun-gold)'"
+        onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text2)'">📄 Terms & Disclaimer</a>
+      <a href="#terms"
+        style="color:var(--text2);text-decoration:none;padding:.3rem .75rem;border:1px solid var(--border);border-radius:999px;font-size:.78rem;"
+        onmouseover="this.style.borderColor='var(--sun-gold)';this.style.color='var(--sun-gold)'"
+        onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text2)'">🙏 Acknowledgements</a>
+      <a href="mailto:manivannan.g@outlook.in"
+        style="color:var(--text2);text-decoration:none;padding:.3rem .75rem;border:1px solid var(--border);border-radius:999px;font-size:.78rem;"
+        onmouseover="this.style.borderColor='var(--sun-gold)';this.style.color='var(--sun-gold)'"
+        onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text2)'">✉️ Contact</a>
+    </p>
+    <p style="margin-top:.75rem;font-size:.72rem;color:var(--text2);opacity:.6;">Built with vanilla HTML/CSS/JS ·
+      Self-hosted on Ubuntu · Powered by open source</p>
+  </footer>
+
+  <script>
+    const ham = document.getElementById('hamburger');
+    const nl = document.getElementById('navLinks');
+    ham.addEventListener('click', () => {
+      nl.classList.toggle('open');
+      const s = ham.querySelectorAll('span'), o = nl.classList.contains('open');
+      s[0].style.transform = o ? 'rotate(45deg) translate(5px,5px)' : '';
+      s[1].style.opacity = o ? '0' : '1';
+      s[2].style.transform = o ? 'rotate(-45deg) translate(5px,-5px)' : '';
+    });
+    nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nl.classList.remove('open');
+      ham.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = '1'; });
+    }));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+
+</html>
