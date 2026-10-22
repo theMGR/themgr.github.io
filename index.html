@@ -4,7 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Manivannan G — Full Stack Mobile Developer</title>
+  <title>Manivannan S G — Full Stack Mobile & Backend Developer | Flutter · Spring Boot</title>
+  <meta name="description" content="Senior Software Engineer with 7+ years building cross-platform Flutter apps and 4 years of Java/Spring Boot backend experience. Specialising in logistics, warehouse mobility, and dairy cooperative solutions." />
+  <meta name="keywords" content="Flutter Developer, Spring Boot, Full Stack Mobile, Android Developer, iOS Developer, Java Developer, Senior Software Engineer, Manivannan G, theMGR" />
+  <meta property="og:title" content="Manivannan S G — Full Stack Mobile & Backend Developer" />
+  <meta property="og:description" content="Senior Software Engineer with 7+ years Flutter + 4 years Java/Spring Boot. Building apps that scale." />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -1129,6 +1134,62 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* CURRENT JOB HIGHLIGHT */
+    .tl-item--current::before {
+      background: var(--sun-rose);
+      box-shadow: 0 0 0 3px var(--bg2), 0 0 10px rgba(242,107,91,.5);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 3px var(--bg2), 0 0 6px rgba(245,166,35,.5); }
+      50% { box-shadow: 0 0 0 3px var(--bg2), 0 0 14px rgba(245,166,35,.8); }
+    }
+
+    .tl-current-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      background: linear-gradient(110deg, var(--sun-rose), var(--sun-gold));
+      color: #fff;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .2rem .6rem;
+      border-radius: 999px;
+      margin-left: .6rem;
+      vertical-align: middle;
+    }
+
+    /* MARQUEE-STYLE scroll animation for hero */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* FEATURED PROJECT card glow */
+    .proj-card--featured {
+      border: 1px solid rgba(245,166,35,.45) !important;
+      box-shadow: 0 0 20px rgba(245,166,35,.08);
+    }
+
+    .proj-card--featured:hover {
+      box-shadow: 0 12px 40px rgba(245,166,35,.2) !important;
+    }
+
+    /* DOWNLOAD BUTTON */
+    .btn-dl {
+      background: transparent;
+      border: 1px solid rgba(245,166,35,.5);
+      color: var(--sun-gold);
+    }
+
+    .btn-dl:hover {
+      background: rgba(245,166,35,.1);
+      border-color: var(--sun-gold);
+    }
   </style>
 </head>
 
@@ -1143,7 +1204,6 @@
       <li><a href="#lab">Lab</a></li>
       <li><a href="#sideprojects">Side Projects</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#terms">Terms</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -1157,19 +1217,20 @@
     <div class="orb orb2"></div>
     <div class="orb orb3"></div>
     <div class="hero-inner">
-      <p class="eyebrow">Full Stack Mobile Developer · 7+ Years</p>
-      <h1>Manivannan G<br><span class="accent">Building apps that scale</span></h1>
-      <p class="hero-desc">Cross-platform mobile specialist crafting high-performance iOS & Android apps. From 48,000+
-        daily warehouse scans to UK last-mile delivery platforms — I ship things that work at scale.</p>
+      <p class="eyebrow">Full Stack Mobile & Backend Developer · 7+ Years</p>
+      <h1>Manivannan S G<br><span class="accent">Building apps that scale</span></h1>
+      <p class="hero-desc">Cross-platform mobile specialist crafting high-performance iOS & Android Flutter apps, backed by 4 years of Java & Spring Boot microservices. From 48,000+ daily warehouse scans to UK last-mile delivery platforms and dairy cooperative solutions — I ship things that work at scale.</p>
       <div class="cta-row">
         <a href="#projects" class="btn btn-p">View my work ↓</a>
         <a href="#contact" class="btn btn-o">Let's connect</a>
+        <a href="ManivannanG_7PlusYear_Senior_Software_Engineer_Full_Stack_Mobile_Resume.pdf" class="btn btn-dl" target="_blank" download>📄 Resume PDF</a>
       </div>
       <div class="badges">
-        <span class="badge">📍 Bhavani, India</span>
+        <span class="badge">📍 Coimbatore, India</span>
         <span class="badge">🎓 M.E. CS · <strong>CGPA 8.22</strong></span>
         <span class="badge">🏆 Best Contributor Award</span>
-        <span class="badge">💼 TVS Supply Chain · <strong>7+ yrs</strong></span>
+        <span class="badge">💼 Flutter + Spring Boot · <strong>7+ yrs</strong></span>
+        <span class="badge">🥛 Masstech Dairy App on Play Store</span>
       </div>
     </div>
   </section>
@@ -1182,12 +1243,14 @@
       <div class="about-grid">
         <div class="about-text reveal">
           <p>Senior Software Engineer with 7+ years of experience building and shipping cross-platform mobile
-            applications for iOS and Android. Specialising in scalable app architecture, REST API integration, and
+            applications for iOS and Android in Flutter (Dart), along with 4 years of backend experience in Java,
+            Spring Boot, and microservices. Specialises in scalable app architecture, REST API integration, and
             enterprise mobility solutions across logistics and warehouse domains.</p>
           <p>Proficient in performance optimisation, offline-first architecture, CI/CD pipelines, and
-            microservices-based backends. Comfortable leading end-to-end delivery — from requirements and design to
-            deployment and production support — in fast-paced Agile teams.</p>
-          <div class="stats-row">
+            microservices-based backends. Uses AI-assisted development to deliver faster with clean project structure.
+            Comfortable leading end-to-end delivery — from requirements and design to deployment and production support
+            — in fast-paced Agile teams.</p>
+          <div class="stats-row" style="grid-template-columns: repeat(4, 1fr);">
             <div class="stat">
               <div class="stat-n">7+</div>
               <div class="stat-l">Years experience</div>
@@ -1200,6 +1263,10 @@
               <div class="stat-n">₹6Cr</div>
               <div class="stat-l">Business impact Q3'24</div>
             </div>
+            <div class="stat">
+              <div class="stat-n">12+</div>
+              <div class="stat-l">Apps shipped</div>
+            </div>
           </div>
         </div>
         <div class="reveal">
@@ -1209,23 +1276,25 @@
               class="tag">Kotlin</span><span class="tag">Java</span>
             <span class="sg-label">State & Architecture</span>
             <span class="tag">GetX</span><span class="tag">Bloc</span><span class="tag">Riverpod</span><span
-              class="tag">Clean Arch</span><span class="tag">MVVM</span><span class="tag">SOLID</span>
+              class="tag">Clean Arch</span><span class="tag">MVVM</span><span class="tag">MVP</span><span class="tag">SOLID</span>
             <span class="sg-label">Backend & APIs</span>
-            <span class="tag">Spring Boot</span><span class="tag">Serverpod</span><span class="tag">REST
+            <span class="tag">Spring Boot</span><span class="tag">Spring Security</span><span class="tag">JPA/Hibernate</span><span class="tag">Serverpod</span><span class="tag">REST
               APIs</span><span class="tag">WebSockets</span><span class="tag">Firebase</span><span
               class="tag">Microservices</span><span class="tag">Retrofit</span><span class="tag">DIO</span><span
               class="tag">OkHttp</span><span class="tag">GetConnect</span>
+            <span class="sg-label">Payments &amp; Integrations</span>
+            <span class="tag">Stripe</span><span class="tag">PayPal</span><span class="tag">Google Maps</span><span class="tag">Google Places</span><span class="tag">Google Ads</span><span class="tag">Facebook API</span>
             <span class="sg-label">Data & Storage</span>
-            <span class="tag">SQLite</span><span class="tag">Hive</span><span class="tag">Realm</span><span
-              class="tag">Sembast</span><span class="tag">Shared Preferences</span><span class="tag">MySQL</span>
+            <span class="tag">MySQL</span><span class="tag">Redis</span><span class="tag">SQLite</span><span class="tag">Hive</span><span class="tag">Realm</span><span
+              class="tag">Sembast</span><span class="tag">Shared Preferences</span>
             <span class="sg-label">Dependency Injection</span>
-            <span class="tag">GetIt</span><span class="tag">Kiwi</span><span class="tag">Dagger</span>
+            <span class="tag">GetIt</span><span class="tag">Kiwi</span><span class="tag">Dagger</span><span class="tag">Spring IoC/DI</span>
             <span class="sg-label">Testing & Performance</span>
             <span class="tag">Widget Testing</span><span class="tag">Unit Testing</span><span class="tag">Performance
               Profiling</span>
             <span class="sg-label">DevOps & CI/CD</span>
             <span class="tag">Codemagic</span><span class="tag">Fastlane</span><span class="tag">Docker</span><span
-              class="tag">Git</span><span class="tag">Subversion</span><span class="tag">Azure DevOps</span><span
+              class="tag">Git</span><span class="tag">GitHub Actions</span><span class="tag">Azure DevOps</span><span
               class="tag">JIRA</span><span class="tag">Apache Kafka</span><span class="tag">Agile/Scrum</span><span
               class="tag">AI-assisted Dev</span>
             <span class="sg-label">Infrastructure & Self-Hosting</span>
@@ -1233,7 +1302,7 @@
               class="tag">Cloudflare</span><span class="tag">Cloudflare Tunnel</span><span
               class="tag">Self-Hosting</span><span class="tag">DNS / SSL</span><span class="tag">Ollama</span>
             <span class="sg-label">Web & Frontend</span>
-            <span class="tag">Angular</span><span class="tag">React</span><span class="tag">Tailwind CSS</span><span
+            <span class="tag">React</span><span class="tag">Tailwind CSS</span><span
               class="tag">HTML/CSS/JS</span>
             <span class="sg-label">Soft Skills</span>
             <span class="tag">Analytical Thinking</span><span class="tag">Problem Solving</span><span
@@ -1287,6 +1356,25 @@
       <p class="s-label reveal">Projects</p>
       <h2 class="s-title reveal">Things I've shipped</h2>
       <div class="proj-grid">
+
+        <div class="proj-card reveal" style="border-color: rgba(245,166,35,.4); background: linear-gradient(135deg, var(--surface), rgba(245,166,35,.04));">
+          <div class="proj-icon" style="background: linear-gradient(135deg, #F59E0B, #D97706);">🥛</div>
+          <div class="proj-name">Masstech Dairy</div>
+          <div class="proj-meta">Masstech Software · Flutter · Team of 3 · 2026</div>
+          <div class="proj-desc">Cloud-based milk collection management app for dairy cooperative societies. Replaced paper records with digital entry, automated milk quality &amp; quantity logging, real-time transactions, and analytics dashboards for society managers.</div>
+          <div class="proj-tags"><span class="ptag">Flutter</span><span class="ptag">Cloud</span><span class="ptag">Analytics</span><span class="ptag">REST APIs</span></div>
+          <div class="store-links">
+            <a class="sl" href="https://play.google.com/store/apps/details?id=app.masstech.dairy" target="_blank" rel="noopener">▶ Play Store</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" style="border-color: rgba(245,166,35,.4); background: linear-gradient(135deg, var(--surface), rgba(245,166,35,.04));">
+          <div class="proj-icon" style="background: linear-gradient(135deg, #10B981, #059669);">📱</div>
+          <div class="proj-name">Masstech Society</div>
+          <div class="proj-meta">Masstech Software · Flutter · Team of 3 · 2026</div>
+          <div class="proj-desc">Offline-first milk collection management app for dairy societies with weak or no internet. Works fully without a network, keeps data on-device, imports records from Excel/CSV, and exports daily, shift-wise &amp; farmer-wise reports.</div>
+          <div class="proj-tags"><span class="ptag">Flutter</span><span class="ptag">Spring Boot</span><span class="ptag">React</span><span class="ptag">Offline-first</span><span class="ptag">Excel Import/Export</span><span class="ptag">CSV</span></div>
+        </div>
 
         <div class="proj-card reveal">
           <div class="proj-icon">🚚</div>
@@ -1351,16 +1439,6 @@
         </div>
 
         <div class="proj-card reveal">
-          <div class="proj-icon">🥛</div>
-          <div class="proj-name">Aavin BMC</div>
-          <div class="proj-meta">Freelance · Flutter · Team of 2</div>
-          <div class="proj-desc">Cloud-based milk collection management for dairy cooperatives. Replaced paper records
-            with digital logging, real-time transactions, and analytics dashboards.</div>
-          <div class="proj-tags"><span class="ptag">Flutter</span><span class="ptag">Analytics</span><span
-              class="ptag">Cloud</span></div>
-        </div>
-
-        <div class="proj-card reveal">
           <div class="proj-icon">🛒</div>
           <div class="proj-name">Gudmart</div>
           <div class="proj-meta">Freelance · Android · 2018–2019</div>
@@ -1414,7 +1492,7 @@
         <div class="lab-card reveal">
           <div class="lab-header">
             <div class="lab-icon">🌐</div>
-            <div class="lab-name">mahendhraa.com · Ubuntu Server</div>
+            <div class="lab-name">mahendhraa.in · Ubuntu Server</div>
           </div>
           <div class="lab-desc">Personal Ubuntu server self-hosted at home. Apache serves static sites; Nginx handles
             reverse proxying for multiple services on the same machine. Fully managed from the command line.</div>
@@ -1427,7 +1505,7 @@
             <div class="lab-icon">☁️</div>
             <div class="lab-name">Cloudflare Tunnel + DNS</div>
           </div>
-          <div class="lab-desc">mahendhraa.com is proxied through Cloudflare — DNS, SSL/TLS termination, DDoS
+          <div class="lab-desc">mahendhraa.in is proxied through Cloudflare — DNS, SSL/TLS termination, DDoS
             protection, and caching handled at the edge. Zero open ports on the server via Cloudflare Tunnel
             (cloudflared) for internal services.</div>
           <div class="lab-stack"><span class="ltag">Cloudflare</span><span class="ltag">cloudflared</span><span
@@ -1501,13 +1579,13 @@
             religion, caste, location, and age, direct messaging, and a match recommendation engine. Built end-to-end
             from AI-generated agent prompts.</div>
           <div class="side-tags"><span class="stag">React</span><span class="stag">Vite</span><span
-              class="stag">Tailwind</span><span class="stag">Node.js</span><span class="stag">MySQL</span></div>
+              class="stag">Tailwind</span><span class="stag">Spring Boot</span><span class="stag">MySQL</span></div>
         </div>
 
         <div class="side-card reveal">
           <div class="side-icon">🌅</div>
           <div class="side-name">This Portfolio</div>
-          <div class="side-meta">Personal · mahendhraa.com · 2025</div>
+          <div class="side-meta">Personal · mahendhraa.in / themgr.is-a.dev / themgr.github.io · 2026</div>
           <div class="side-desc">Zero-dependency, single HTML file portfolio. Sunrise colour palette with auto
             light/dark mode, scroll-reveal animations, fully responsive. Served via Apache on Ubuntu, proxied through
             Cloudflare.</div>
@@ -1536,23 +1614,28 @@
       <p class="s-label reveal">Experience</p>
       <h2 class="s-title reveal">Where I've worked</h2>
       <div class="timeline reveal">
+        <div class="tl-item tl-item--current" style="padding-bottom:.5rem;">
+          <div class="tl-date" style="color:var(--sun-gold);font-weight:600;">May 2026 – Oct 2026 <span class="tl-current-badge">⚡ Recent</span></div>
+          <div class="tl-role">Senior Software Engineer</div>
+          <div class="tl-company">Masstech Software (Contract) · Salem</div>
+          <ul class="tl-pts">
+            <li>Built <strong>Masstech Dairy (Aavin BMC)</strong> in Flutter — a cloud-based milk collection app replacing paper records with digital entry, automated logging, real-time transactions, and analytics dashboards.</li>
+            <li>Developed <strong>Masstech Society (Aavin Society)</strong> — offline-first version for societies with weak/no internet; supports Excel and CSV import/export for daily, shift-wise, and farmer-wise reports.</li>
+            <li>Designed simple screens and clear alerts for farmers new to smartphones and Web portals.</li>
+            <li>Connected apps to backend REST APIs; handled testing, release, and production support.</li>
+          </ul>
+        </div>
         <div class="tl-item">
           <div class="tl-date">Mar 2019 – May 2026 · 7+ years</div>
           <div class="tl-role">Senior Software Engineer</div>
           <div class="tl-company">TVS Supply Chain Solutions (White Data Systems India Pvt Ltd) · Coimbatore</div>
           <ul class="tl-pts">
-            <li>Built and maintained cross-platform mobile apps for iOS and Android serving logistics and warehouse
-              operations, improving user engagement by 30%.</li>
-            <li>Implemented silent PDF and ZPL printing for warehouse label printers, enabling background printing
-              without user intervention.</li>
-            <li>Led end-to-end mobile development lifecycle from requirements and architecture through deployment and
-              production support.</li>
-            <li>Reduced application crash rates by 25% through systematic debugging, root-cause analysis, and targeted
-              performance optimisations.</li>
-            <li>Mentored junior developers, conducted code reviews, and facilitated daily scrums — driving a 20%
-              improvement in sprint efficiency.</li>
-            <li>Authored and maintained comprehensive technical documentation for features and APIs, improving team
-              onboarding speed and knowledge sharing.</li>
+            <li>Built and maintained cross-platform mobile apps for iOS and Android in Flutter (Dart), serving logistics and warehouse operations and improving user engagement by 30%.</li>
+            <li>Designed and built REST APIs using Java and Spring Boot in a microservices setup, with Spring Security (JWT), JPA/Hibernate, and tuned MySQL queries and indexes for fast responses.</li>
+            <li>Implemented silent PDF and ZPL printing for warehouse label printers, enabling background printing without user intervention and significantly improving operational throughput.</li>
+            <li>Reduced application crash rates by 25% through systematic debugging, root-cause analysis, and targeted performance optimisations.</li>
+            <li>Led end-to-end development (mobile and backend), from requirements to deployment, including CI/CD with Codemagic, Fastlane, and GitHub Actions, and production support.</li>
+            <li>Mentored junior developers and conducted code reviews, contributing to a 20% improvement in sprint efficiency.</li>
           </ul>
         </div>
         <div class="tl-item">
@@ -1703,7 +1786,7 @@
           <div class="credit-chip-icon">☁️</div>
           <div class="credit-chip-text">
             <strong>Cloudflare — Cloudflare Inc.</strong>
-            DNS, SSL, and tunnel services for mahendhraa.com. cloudflare.com
+            DNS, SSL, and tunnel services for mahendhraa.in. cloudflare.com
           </div>
         </div>
         <div class="credit-chip">
@@ -1781,7 +1864,7 @@
     <div class="inner">
       <div class="contact-box reveal">
         <h3>Let's build something together</h3>
-        <p>Open to senior developer roles, freelance projects, and interesting collaborations.<br>Based in Bhavani ·
+        <p>Open to senior developer roles, freelance projects, and interesting collaborations.<br>Based in Coimbatore ·
           Available remotely.</p>
         <div class="c-links">
           <a href="mailto:manivannan.g@outlook.in" class="c-link">
@@ -1821,7 +1904,7 @@
   <a href="#terms" class="terms-pill">📄 Terms & Credits</a>
 
   <footer>
-    <p>© 2025 Manivannan G · Full Stack Mobile Developer · mahendhraa.com</p>
+    <p>© 2026 Manivannan S G · Full Stack Mobile &amp; Backend Developer · mahendhraa.in / themgr.is-a.dev / themgr.github.io</p>
     <p style="margin-top:.75rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;">
       <a href="#terms"
         style="color:var(--text2);text-decoration:none;padding:.3rem .75rem;border:1px solid var(--border);border-radius:999px;font-size:.78rem;"
