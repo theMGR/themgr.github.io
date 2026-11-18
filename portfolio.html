@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manivannan S G — Senior Software Engineer</title>
+<meta name="description" content="Senior Software Engineer. 7+ years building Flutter mobile apps, with 4 years of Java and Spring Boot backend.">
+<style>
+:root{
+  --bg:#faf8f4; --surface:#ffffff; --text:#1c2321; --muted:#5d6763; --line:#e4e0d8;
+  --accent:#0f6b57; --accent-soft:#e3f1ec; --on-accent:#ffffff;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#121715; --surface:#1a211e; --text:#eef2ef; --muted:#9aa7a1; --line:#2b3531;
+    --accent:#4cc9a4; --accent-soft:#1c2e28; --on-accent:#0b1512;}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.65;font-size:16px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+header.nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;height:56px;gap:16px}
+.logo{font-weight:700;letter-spacing:.3px;color:var(--text)}
+.nav nav{display:flex;gap:18px;font-size:14px;overflow-x:auto;white-space:nowrap}
+.nav nav a{color:var(--muted)}
+.nav nav a:hover{color:var(--accent);text-decoration:none}
+.hero{padding:72px 0 48px}
+.eyebrow{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:13px;font-weight:600;padding:5px 12px;border-radius:99px;margin-bottom:18px}
+h1{font-size:clamp(34px,6vw,56px);line-height:1.1;letter-spacing:-1px;margin-bottom:14px}
+.lead{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:680px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{display:inline-block;padding:11px 20px;border-radius:10px;font-weight:600;font-size:15px;border:1px solid var(--line);color:var(--text);background:var(--surface)}
+.btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:44px 0 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.stat b{display:block;font-size:30px;color:var(--accent);line-height:1.1}
+.stat span{font-size:13px;color:var(--muted)}
+section{padding:54px 0;border-top:1px solid var(--line)}
+h2{font-size:26px;letter-spacing:-.3px;margin-bottom:22px}
+p.about{max-width:760px;color:var(--muted);font-size:17px}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.card h3{font-size:14px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tags span{background:var(--accent-soft);color:var(--accent);font-size:13px;font-weight:500;padding:4px 10px;border-radius:99px}
+.job{display:grid;grid-template-columns:170px 1fr;gap:8px 28px;padding:0 0 30px}
+.job .when{color:var(--muted);font-size:14px;padding-top:3px}
+.job h3{font-size:18px}
+.job .org{color:var(--accent);font-weight:600;font-size:15px;margin-bottom:8px}
+.job ul{padding-left:18px;color:var(--muted)}
+.job li{margin-bottom:6px}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:16px}
+.proj{display:flex;flex-direction:column;gap:10px}
+.proj h3{font-size:18px;text-transform:none;letter-spacing:0;color:var(--text);margin:0}
+.proj .meta{font-size:13px;color:var(--muted)}
+.proj p{color:var(--muted);font-size:15px}
+.links{margin-top:auto;display:flex;gap:14px;font-size:14px;font-weight:600}
+.ach{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:14px}
+.ach .card b{display:block;margin-bottom:4px}
+.ach .card p{color:var(--muted);font-size:15px}
+.edu{display:grid;gap:12px}
+.edu .row{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 20px}
+.edu small{color:var(--muted);display:block}
+.contact{text-align:center}
+.contact p{color:var(--muted);margin-bottom:22px}
+.contact .cta{justify-content:center}
+footer{padding:26px 0 40px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+@media (max-width:640px){
+  .job{grid-template-columns:1fr}
+  .ach{grid-template-columns:1fr}
+  .hero{padding-top:48px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">Manivannan S G</a>
+    <nav>
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
+      <a href="#projects">Projects</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="wrap">
+
+  <div class="hero">
+    <span class="eyebrow">Senior Software Engineer · Full Stack Mobile &amp; Web</span>
+    <h1>I build mobile apps that work in real warehouses, on real roads, and in real villages.</h1>
+    <p class="lead">7+ years shipping Flutter apps for iOS and Android, plus 4 years of Java and Spring Boot backend. From the app to the API to the release, I can deliver the whole product.</p>
+    <div class="cta">
+      <a class="btn primary" href="#projects">See my work</a>
+      <a class="btn" href="mailto:manivannan.g@outlook.in">Email me</a>
+      <a class="btn" href="https://github.com/theMGR">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/themgr/">LinkedIn</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>7+</b><span>Years in mobile</span></div>
+      <div class="stat"><b>4</b><span>Years in backend</span></div>
+      <div class="stat"><b>48,000+</b><span>Warehouse scans per day</span></div>
+      <div class="stat"><b>₹6 Cr</b><span>Business outcome, Q3 2024</span></div>
+    </div>
+  </div>
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="about">I’m a Senior Software Engineer based in Coimbatore. I make cross-platform apps in Flutter (Dart) and the Java and Spring Boot services behind them. Most of my work is in logistics and warehouse operations, where apps must be fast, steady, and easy to use. I care about clean app structure, offline-first design, and simple screens for people who are new to smartphones. I also use AI-assisted development to move faster while keeping the code tidy.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="card"><h3>Mobile &amp; Web</h3><div class="tags"><span>Flutter</span><span>Dart</span><span>Java</span><span>Kotlin</span><span>Android SDK</span><span>iOS</span><span>JavaScript</span><span>ReactJS</span></div></div>
+      <div class="card"><h3>Backend &amp; APIs</h3><div class="tags"><span>Spring Boot</span><span>Spring Security</span><span>Serverpod</span><span>REST APIs</span><span>Microservices</span><span>JPA/Hibernate</span></div></div>
+      <div class="card"><h3>Architecture &amp; State</h3><div class="tags"><span>Clean Architecture</span><span>MVVM</span><span>MVP</span><span>SOLID</span><span>GetX</span><span>BLoC</span><span>Riverpod</span></div></div>
+      <div class="card"><h3>Dependency Injection</h3><div class="tags"><span>GetIt</span><span>Kiwi</span><span>Dagger</span><span>Spring IoC/DI</span></div></div>
+      <div class="card"><h3>Databases &amp; Storage</h3><div class="tags"><span>MySQL</span><span>Redis</span><span>SQLite</span><span>Hive</span><span>Sembast</span><span>Realm</span><span>SharedPreferences</span></div></div>
+      <div class="card"><h3>Integrations</h3><div class="tags"><span>Retrofit</span><span>Dio</span><span>OkHttp</span><span>Firebase</span><span>FCM</span><span>WebSockets</span><span>Google Maps</span><span>PayPal</span><span>Stripe</span></div></div>
+      <div class="card"><h3>DevOps &amp; Release</h3><div class="tags"><span>Docker</span><span>Kafka</span><span>Git</span><span>GitHub Actions</span><span>Fastlane</span><span>Codemagic</span><span>Play Console</span><span>App Store Connect</span></div></div>
+      <div class="card"><h3>Testing &amp; Ways of Working</h3><div class="tags"><span>Unit Testing</span><span>Widget Testing</span><span>Profiling</span><span>JIRA</span><span>Agile/Scrum</span><span>Mentoring</span></div></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div class="when">May 2026 – Oct 2026<br>Salem · Contract</div>
+      <div>
+        <h3>Senior Software Engineer</h3>
+        <div class="org">Masstech Software</div>
+        <ul>
+          <li>Built <b>Masstech Dairy (Aavin BMC)</b> in Flutter. It replaced paper records with digital entry, automatic milk quality and quantity logging, live transactions, and dashboards for society managers.</li>
+          <li>Built <b>Masstech Society (Aavin Society)</b>, an offline-first version for places with weak or no internet, with Excel and CSV import and export for daily, shift-wise, and farmer-wise reports.</li>
+          <li>Designed simple screens and clear alerts for farmers who are new to smartphones.</li>
+          <li>Connected the apps and a React web app to REST APIs, and handled testing, release, and production support.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Mar 2019 – May 2026<br>Coimbatore</div>
+      <div>
+        <h3>Senior Software Engineer</h3>
+        <div class="org">TVS Supply Chain Solutions (White Data Systems India Pvt Ltd)</div>
+        <ul>
+          <li>Built and maintained Flutter apps for iOS and Android for logistics and warehouse work, lifting user engagement by 30%.</li>
+          <li>Designed REST APIs with Java and Spring Boot in a microservices setup, using Spring Security (JWT), JPA/Hibernate, and tuned MySQL queries and indexes.</li>
+          <li>Added silent PDF and ZPL printing for warehouse label printers, so labels print in the background with no user action.</li>
+          <li>Improved app stability through careful debugging, root-cause analysis, and performance fixes.</li>
+          <li>Led development from requirements to deployment, including CI/CD with Codemagic, Fastlane, and GitHub Actions. Mentored junior developers and ran code reviews.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Feb 2018 – Feb 2019<br>Erode, Coimbatore</div>
+      <div>
+        <h3>Freelance Android Developer &amp; Stakeholder</h3>
+        <div class="org">Gudmart</div>
+        <ul>
+          <li>Designed a multi-party e-commerce platform for five roles: Manufacturer, Distributor, Wholesaler, Retailer, and Consumer.</li>
+          <li>Created a model where one account can both buy and sell, with no separate logins.</li>
+          <li>Built buyer flows (discovery, ordering, live tracking) and seller tools (store setup, catalog, full order handling).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Oct 2015 – Jan 2018<br>Coimbatore</div>
+      <div>
+        <h3>Junior Android App &amp; Game Developer</h3>
+        <div class="org">Arrin Solutions</div>
+        <ul>
+          <li>Connected apps to backends with Retrofit and OkHttp, and set up Firebase for push notifications, real-time data, and sign-in.</li>
+          <li>Added Google Maps, Google Places, Facebook, Twitter, and Google Ads integrations.</li>
+          <li>Made Android games in Unity 3D, including a Google Cardboard VR experience.</li>
+          <li>Ran the full Android cycle on my own, from wireframes to Play Store release.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+
+      <div class="card proj">
+        <h3>Masstech Dairy (Aavin BMC)</h3>
+        <div class="meta">Flutter · Team of 3 · Masstech Software</div>
+        <p>Cloud milk collection app for dairy societies. Digital entry, automatic quality and quantity logging, real-time transactions, and analytics.</p>
+        <div class="links"><a href="https://play.google.com/store/apps/details?id=app.masstech.dairy">Play Store</a></div>
+      </div>
+
+      <div class="card proj">
+        <h3>Masstech Society (Aavin Society)</h3>
+        <div class="meta">Flutter · Team of 3 · Masstech Software</div>
+        <p>Offline-first milk collection app. Works with no network, imports from Excel and CSV, and exports daily, shift-wise, and farmer-wise reports.</p>
+      </div>
+
+      <div class="card proj">
+        <h3>Courier Alliance</h3>
+        <div class="meta">Flutter + Spring Boot · Team of 4 · TVS</div>
+        <p>UK last-mile delivery platform. Couriers bid for nearby jobs in real time, and the system picks the best match using location data.</p>
+        <div class="links"><a href="https://play.google.com/store/apps/details?id=com.courieralliance.driverca">Play Store</a><a href="https://apps.apple.com/in/app/courier-alliance/id1533237764">App Store</a></div>
+      </div>
+
+      <div class="card proj">
+        <h3>i-eXchange</h3>
+        <div class="meta">Flutter + Spring Boot · Team of 4 · TVS</div>
+        <p>India logistics platform for manual courier allocation. Gives dispatchers and drivers live visibility across the whole delivery flow.</p>
+        <div class="links"><a href="https://play.google.com/store/apps/details?id=com.iex.driver">Play Store</a><a href="https://apps.apple.com/in/app/i-exchange/id1545190755">App Store</a></div>
+      </div>
+
+      <div class="card proj">
+        <h3>Visibility – Warehouse Management</h3>
+        <div class="meta">Flutter · Team of 4 · TVS</div>
+        <p>Warehouse app handling 48,000+ barcode scans a day. Staff do goods receipt, putaway, picking, and dispatch fully on mobile.</p>
+      </div>
+
+      <div class="card proj">
+        <h3>i-Loads Suite</h3>
+        <div class="meta">Android · Team of 5 · Mar 2019 – May 2021 · TVS</div>
+        <p>Three apps on one logistics platform: a core hub, a load provider portal, and a driver app with live location and order completion.</p>
+      </div>
+
+      <div class="card proj">
+        <h3>Silk Track</h3>
+        <div class="meta">Flutter · Team of 2 · Freelance</div>
+        <p>Retail app for local apparel sellers. Manage products, capture leads, and follow each order from booking to delivery.</p>
+      </div>
+
+      <div class="card proj">
+        <h3>Gudmart</h3>
+        <div class="meta">Android · Team of 2 · Feb 2018 – Feb 2019</div>
+        <p>Five-role e-commerce app where any party can buy and sell from one account, with catalog, store setup, and order tracking.</p>
+      </div>
+
+      <div class="card proj">
+        <h3>Tasti</h3>
+        <div class="meta">Android · Team of 3 · Arrin Solutions</div>
+        <p>Hyperlocal food marketplace linking home cooks with nearby customers. GPS and Maps discovery, Cash on Delivery and PayPal, plus ratings.</p>
+      </div>
+
+      <div class="card proj">
+        <h3>CrossyDrive &amp; Pick’nDrop</h3>
+        <div class="meta">Unity 3D · Team of 3 · Arrin Solutions</div>
+        <p>Two casual games: a blocky endless car racer, and an isometric stealth-delivery game about moving parcels to hideouts.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="achievements">
+    <h2>Highlights</h2>
+    <div class="ach">
+      <div class="card"><b>Enterprise app impact</b><p>Led a warehouse app handling 48,000+ scans a day, tied to a ₹6 Crore business outcome in Q3 2024.</p></div>
+      <div class="card"><b>25% fewer crashes</b><p>Better testing, profiling, and targeted fixes made the app more stable.</p></div>
+      <div class="card"><b>Best Contributor Award</b><p>Recognised for on-time sprint delivery and quality work across many release cycles.</p></div>
+      <div class="card"><b>20% better sprint efficiency</b><p>Led scrums, mentored developers, and improved how teams talk to each other.</p></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu">
+      <div class="row"><div><b>M.E. in Computer Science · CGPA 8.22</b><small>Karpagam University, Coimbatore</small></div><small>Aug 2011 – Jul 2013</small></div>
+      <div class="row"><div><b>B.Tech in Information Technology · CGPA 7.54</b><small>The Kavery Engineering College, Mecheri</small></div><small>May 2007 – Apr 2011</small></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Let’s work together</h2>
+    <p>Have an app or a backend to build? Send me a note.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:manivannan.g@outlook.in">manivannan.g@outlook.in</a>
+      <a class="btn" href="https://github.com/theMGR">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/themgr/">LinkedIn</a>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>© Manivannan S G · Coimbatore, India</footer>
+
+</body>
+</html>
